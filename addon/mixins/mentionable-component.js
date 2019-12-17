@@ -168,7 +168,7 @@ export default Ember.Mixin.create({
     if (isPresent(searchProperty)) {
       selectedValue = Ember.Object.create(selectedValue).get(searchProperty);
     }
-    const value = this.get('value').replace(this.get('match'), '');
+    const value = this.get('value').replace(new RegExp(this.get('match') + "$"), '');
     const token = this.get('token');
     this.set('value', `${value}${token}${selectedValue} `);
     this.set('matchingValues', null);
